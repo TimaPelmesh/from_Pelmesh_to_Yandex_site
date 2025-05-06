@@ -1567,4 +1567,111 @@ h4.no-icon {
     50% {
         transform: rotate(-45deg) translateX(-10px);
     }
+}
+
+/* Улучшения для мобильной адаптации */
+@media (max-width: 768px) {
+    /* Улучшение отображения баннера */
+    .hero-banner {
+        padding: 30px 0;
+    }
+    
+    .banner-content {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .hero-banner h1 {
+        font-size: 26px;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    
+    .hero-banner h2 {
+        font-size: 22px;
+        line-height: 1.4;
+        margin-bottom: 15px;
+    }
+    
+    .hero-banner p {
+        font-size: 16px;
+        line-height: 1.4;
+        max-width: 100%;
+    }
+    
+    /* Улучшение FAQ-секции */
+    .faq-section {
+        padding: 40px 0;
+    }
+    
+    .faq-item {
+        padding: 15px;
+        margin-bottom: 12px;
+    }
+    
+    .faq-question {
+        padding: 0 10px;
+        font-size: 16px;
+    }
+    
+    .faq-answer {
+        padding: 0 10px;
+    }
+    
+    .faq-answer p {
+        padding: 10px 15px;
+        margin: 0;
+    }
+    
+    /* Улучшение формы поиска */
+    .search-form {
+        padding: 20px;
+    }
+    
+    .input-group {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Дополнительные улучшения для очень маленьких экранов */
+    .hero-banner h1 {
+        font-size: 24px;
+        white-space: normal;
+    }
+    
+    .hero-banner h2 {
+        font-size: 20px;
+        white-space: normal;
+    }
+    
+    .hero-banner p {
+        white-space: normal;
+    }
+    
+    .highlight-blue {
+        display: inline-block;
+        white-space: normal;
+    }
+    
+    /* Улучшение FAQ-секции для маленьких экранов */
+    .faq-section .container {
+        padding: 0 15px;
+    }
+    
+    .faq-item {
+        border-radius: 10px;
+    }
+    
+    .faq-question {
+        font-size: 15px;
+        padding: 0 8px;
+    }
+    
+    .faq-answer p {
+        padding: 8px 12px;
+        font-size: 14px;
+        line-height: 1.4;
+    }
 } 
