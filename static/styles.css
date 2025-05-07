@@ -1335,22 +1335,25 @@ h4.no-icon {
 .hero-banner h1 {
     font-size: 40px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: var(--yandex-white);
+    line-height: 1.1;
 }
 
 .hero-banner h2 {
     font-size: 32px;
     font-weight: 700;
+    margin-top: 0;
     margin-bottom: 24px;
     color: var(--yandex-white);
+    line-height: 1.1;
 }
 
 .hero-banner p {
     font-size: 18px;
     max-width: 700px;
     margin: 0 auto 20px;
-    line-height: 1.6;
+    line-height: 1.4;
 }
 
 .hero-banner .highlight-blue {
@@ -1398,21 +1401,39 @@ h4.no-icon {
 /* Медиа-запросы для адаптивности */
 @media (max-width: 768px) {
     .hero-banner {
-        min-height: 420px;
-        padding: 40px 0;
+        padding: 30px 0 40px 0 !important;
+        min-height: auto !important;
     }
     
+    .banner-content {
+        width: 100% !important;
+        padding: 0 20px !important;
+        text-align: left !important;
+    }
+    
+    /* Уменьшенные отступы между заголовками */
     .hero-banner h1 {
-        font-size: 32px;
+        font-size: 32px !important;
+        line-height: 1.15 !important;
+        margin-bottom: 2px !important;
+        text-align: left !important;
     }
     
     .hero-banner h2 {
-        font-size: 26px;
+        font-size: 24px !important;
+        line-height: 1.15 !important;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+        padding: 0 !important;
+        text-align: left !important;
     }
     
     .hero-banner p {
-        font-size: 16px;
-        margin-bottom: 30px;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+        margin: 10px 0 0 0 !important;
+        max-width: 100% !important;
+        text-align: left !important;
     }
 }
 
