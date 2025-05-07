@@ -17,7 +17,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Yandex Sans', Arial, sans-serif;
-    border-left-color: transparent !important;
+    border-left-color: initial;
 }
 
 body {
@@ -232,7 +232,19 @@ main {
 }
 
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+}
+
+.input-group:nth-child(3) {
+    margin-bottom: 10px;
+}
+
+.input-group:nth-child(4) {
+    margin-top: 0;
+}
+
+*[style*="border-left"] {
+    border-left: 2px solid #ddd !important;
 }
 
 label {
@@ -250,14 +262,27 @@ input, textarea {
     font-size: 16px;
     transition: all 0.3s;
     background-color: #fff;
-    border-left: 2px solid #ddd !important;
+    box-sizing: border-box;
+    box-shadow: none;
 }
 
 input:focus, textarea:focus {
     outline: none;
-    border-color: #999999;
-    border-left-color: #999999 !important;
+    border: 2px solid #999999;
     box-shadow: 0 0 0 3px rgba(153, 153, 153, 0.3);
+}
+
+/* Исправляем проблему с выделением поля ввода */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: inherit !important;
+    border: 2px solid #999999;
 }
 
 button {
@@ -399,6 +424,7 @@ button:active {
     margin-bottom: 25px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
     transition: none;
+    border-left: none !important;
 }
 
 .roadmap-section:hover {
@@ -500,29 +526,27 @@ ul {
 
 /* Единые стили для всех элементов списка внутри roadmap-section */
 .roadmap-section ul {
-    padding-left: 0;
-    list-style: none;
-    border-left: none !important;
+    padding-left: 20px;
+    margin-left: 15px;
+    margin-bottom: 10px;
 }
 
 .roadmap-section li {
     position: relative;
-    padding-left: 28px;
+    padding-left: 20px;
     margin-bottom: 10px;
     line-height: 1.5;
-    border-left: none !important;
+    text-align: left;
 }
 
 .roadmap-section li::before {
     content: "•";
     position: absolute;
-    left: 8px;
+    left: 0;
     top: 0;
-    color: #888;
+    color: #666;
     font-size: 16px;
     display: inline-block;
-    background: none !important;
-    background-color: transparent !important;
 }
 
 /* Удаляем желтые вертикальные линии */
@@ -1078,7 +1102,7 @@ h4.no-icon {
 .resource-section {
     margin-top: 20px;
     padding: 15px;
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: #fff;
     border-radius: var(--yandex-border-radius);
     border-left: none;
 }
@@ -1106,14 +1130,16 @@ h4.no-icon {
     border-radius: 16px;
     font-size: 14px;
     font-weight: 500;
-    background-color: #f0f0f0;
+    background-color: #F0F0F0;
     transition: all 0.2s ease;
-    color: var(--yandex-black);
+    color: #555;
 }
 
 .resource-tab.active {
-    background-color: #e5e5e5;
-    color: var(--yandex-black);
+    background-color: #E8F4FF;
+    color: #0066CC;
+    font-weight: 500;
+    border: none;
 }
 
 .resource-tab.active::before {
@@ -1125,7 +1151,7 @@ h4.no-icon {
     list-style: none;
     margin: 0;
     padding: 15px;
-    background-color: #fafafa;
+    background-color: #fff;
     border-radius: 8px;
     border-left: none;
     box-shadow: none;
@@ -1135,11 +1161,10 @@ h4.no-icon {
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #eee;
-    position: relative;
-    padding-left: 0;
+    background-color: #fff;
 }
 
-/* Убираем все возможные линии слева */
+/* Удаляем все возможные линии слева */
 .resource-item:before,
 .resource-item:after,
 .resource-list:before,
@@ -1157,12 +1182,12 @@ h4.no-icon {
 }
 
 .resource-title a {
-    color: #333;
+    color: #0070E0;
     text-decoration: none;
 }
 
 .resource-title a:hover {
-    color: #111;
+    color: #0050B0;
     text-decoration: underline;
 }
 
@@ -1297,9 +1322,12 @@ h4.no-icon {
 }
 
 .resource-badge.free {
-    background-color: rgba(0, 115, 0, 0.07);
-    color: #007300;
+    background-color: rgba(0, 150, 0, 0.1);
+    color: #007A00;
     border: none;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 4px;
 }
 
 .resource-badge.paid {
@@ -1309,11 +1337,17 @@ h4.no-icon {
 
 /* Улучшенные стили для списка навыков */
 .skills-container .roadmap-section ul li {
+    padding-left: 20px;
     position: relative;
-    margin-bottom: 10px;
-    padding-left: 5px;
-    font-size: 16px;
-    border-left: none;
+    text-align: left;
+}
+
+.skills-container .roadmap-section ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #888;
 }
 
 /* Изменяем стиль списка тенденций будущего на обычный маркированный список */
@@ -1873,5 +1907,68 @@ h4.no-icon {
 .input-group textarea,
 .search-form input,
 .search-form textarea {
-    border-left: 2px solid #ddd !important;
+    border: 2px solid #ddd;
+}
+
+/* Удаляем все лишние прямоугольники/контейнеры */
+.roadmap-section ul#future-insights,
+.skills-container .roadmap-section ul {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+/* Добавляем отступ от левого края для маркированных списков */
+.roadmap-section ul {
+    padding-left: 15px;
+    margin-left: 10px;
+}
+
+.roadmap-section li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* Исправляем стиль точек в списках */
+.roadmap-section li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #666;
+    font-size: 16px;
+    display: inline-block;
+}
+
+/* Отступы для секций с тенденциями будущего */
+.roadmap-section h4 + ul {
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+/* Большой отступ для маркированных списков от левого края */
+.roadmap-section {
+    padding-left: 15px;
+}
+
+.roadmap-section ul {
+    padding-left: 20px !important;
+    margin-left: 20px !important;
+}
+
+/* Исправляем выравнивание в списках навыков */
+.skills-container .roadmap-section ul {
+    padding-left: 20px !important;
+    margin-left: 20px !important;
+}
+
+/* Исправляем выравнивание во всех других списках */
+.roadmap-section ul#future-insights {
+    padding-left: 20px !important;
+    margin-left: 20px !important;
 } 
