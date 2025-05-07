@@ -1302,9 +1302,11 @@ h4.no-icon {
     min-height: 320px;
     background: linear-gradient(135deg, #667eea 0%, #3e67ee 100%);
     color: var(--yandex-white);
-    padding: 40px 0;
+    padding: 50px 0; /* Одинаковые отступы сверху и снизу */
     overflow: hidden;
     margin-bottom: 20px;
+    display: flex; /* Добавляем flexbox для баннера */
+    align-items: center; /* Центрирование по вертикали */
 }
 
 .banner-content {
@@ -1314,21 +1316,17 @@ h4.no-icon {
     padding: 0 20px;
     z-index: 2;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+    width: 100%; /* Полная ширина */
 }
 
 .banner-background {
     position: absolute;
-    bottom: -100px;
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 150px;
+    height: 20px;
     background-color: var(--yandex-white);
-    transform: skewY(-3deg);
+    transform: none;
     z-index: 1;
 }
 
@@ -1352,7 +1350,7 @@ h4.no-icon {
 .hero-banner p {
     font-size: 18px;
     max-width: 700px;
-    margin: 0 auto 20px;
+    margin: 0 auto 30px;
     line-height: 1.4;
 }
 
@@ -1401,8 +1399,10 @@ h4.no-icon {
 /* Медиа-запросы для адаптивности */
 @media (max-width: 768px) {
     .hero-banner {
-        padding: 30px 0 40px 0 !important;
+        padding: 40px 0 !important; /* Равные отступы для центрирования */
         min-height: auto !important;
+        display: flex !important;
+        align-items: center !important;
     }
     
     .banner-content {
@@ -1431,7 +1431,7 @@ h4.no-icon {
     .hero-banner p {
         font-size: 16px !important;
         line-height: 1.4 !important;
-        margin: 10px 0 0 0 !important;
+        margin: 10px 0 25px 0 !important;
         max-width: 100% !important;
         text-align: left !important;
     }
@@ -1593,7 +1593,7 @@ h4.no-icon {
 /* Улучшенные стили для мобильной версии баннера */
 @media (max-width: 768px) {
     .hero-banner {
-        padding: 40px 0 50px 0 !important;
+        padding: 40px 0 !important;
     }
     
     .banner-content {
