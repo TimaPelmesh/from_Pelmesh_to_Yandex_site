@@ -17,6 +17,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Yandex Sans', Arial, sans-serif;
+    border-left-color: transparent !important;
 }
 
 body {
@@ -241,18 +242,21 @@ label {
     font-size: 16px;
 }
 
-input {
+input, textarea {
     width: 100%;
     padding: 14px 18px;
     border: 2px solid #ddd;
     border-radius: 12px;
     font-size: 16px;
     transition: all 0.3s;
+    background-color: #fff;
+    border-left: 2px solid #ddd !important;
 }
 
-input:focus {
+input:focus, textarea:focus {
     outline: none;
     border-color: #999999;
+    border-left-color: #999999 !important;
     box-shadow: 0 0 0 3px rgba(153, 153, 153, 0.3);
 }
 
@@ -346,14 +350,7 @@ button:active {
 }
 
 .roadmap h3::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 80px;
-    height: 3px;
-    background-color: var(--yandex-yellow);
-    border-radius: 1.5px;
+    display: none;
 }
 
 /* Улучшенные стили для контейнера с навыками */
@@ -396,8 +393,17 @@ button:active {
 }
 
 .roadmap-section {
-    margin-bottom: 35px;
-    padding-bottom: 5px;
+    background-color: white;
+    border-radius: 16px;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+    transition: none;
+}
+
+.roadmap-section:hover {
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
 }
 
 /* Другие секции roadmap с согласованными отступами */
@@ -493,94 +499,145 @@ ul {
 }
 
 /* Единые стили для всех элементов списка внутри roadmap-section */
-.roadmap-section li {
-    position: relative;
-    padding-left: 22px; /* Отступ для маркера */
-    margin-bottom: 15px;
-    font-size: 16px;
-    line-height: 1.5;
+.roadmap-section ul {
+    padding-left: 0;
+    list-style: none;
+    border-left: none !important;
 }
 
-/* Маркеры для всех элементов списка */
+.roadmap-section li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    border-left: none !important;
+}
+
 .roadmap-section li::before {
-    content: "";
-    display: block;
-    width: 6px;
-    height: 6px;
-    background-color: #999999;
-    border-radius: 50%;
+    content: "•";
     position: absolute;
-    left: 5px;
-    top: 10px;
+    left: 8px;
+    top: 0;
+    color: #888;
+    font-size: 16px;
+    display: inline-block;
+    background: none !important;
+    background-color: transparent !important;
+}
+
+/* Удаляем желтые вертикальные линии */
+.roadmap-section ul#future-insights,
+.skills-container .roadmap-section ul {
+    border-left: none !important;
+}
+
+.roadmap > .roadmap-section {
+    border-left: none !important;
 }
 
 #learning-plan {
     position: relative;
     margin-top: 25px;
-    padding-left: 10px;
+    padding-left: 0;
+    list-style: none;
 }
 
-#learning-plan:before {
-    display: none;
+/* Удаляем все маркеры списка */
+#learning-plan li,
+#learning-plan li::before,
+#learning-plan li::after {
+    list-style-type: none !important;
+    display: block;
+    background: none !important;
+    content: none;
 }
 
+/* Новый стиль для плашек в плане обучения */
 .learning-step {
     position: relative;
-    padding: 25px 25px 25px 35px;
-    margin-bottom: 15px;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.9), white);
-    border-radius: 12px;
+    padding: 24px 26px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #eaeaea;
+    transition: border-color 0.2s ease;
+    margin-left: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-left: 1px solid #eaeaea !important;
+}
+
+/* Перезаписываем все возможные стили, которые могут вызывать желтые линии */
+.roadmap-section li::before,
+.roadmap-section li::after,
+.learning-step::before,
+.learning-step::after {
+    border-left: none !important;
+    border-left-color: transparent !important;
+    background: none !important;
+    background-color: transparent !important;
+}
+
+/* Добавляем номера шагов */
+.learning-step {
+    counter-increment: step-counter;
+    padding-right: 20px;
+}
+
+.learning-step strong.step-title::before {
+    content: counter(step-counter);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #f0f0f0;
+    color: #555;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Заменяем желтые боковые полоски */
+.roadmap-section ul#future-insights {
     border-left: none;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-    transition: all 0.3s ease;
 }
 
-.learning-step:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 5px;
-    background: linear-gradient(to bottom, var(--yandex-yellow), #FFE082);
-    border-radius: 3px 0 0 3px;
+/* Удаляем все желтые элементы */
+.roadmap h3::after,
+.roadmap-section h4::after,
+.learning-step::before,
+.learning-step::after {
+    background-color: #ccc !important;
+    background: #ccc !important;
+    border-color: #ccc !important;
 }
 
-/* Удаляем круглые маркеры из шагов обучения */
-.learning-step:after {
-    display: none;
-}
-
-.learning-step:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
-}
-
-/* Удаляем стиль при наведении для маркера, так как его больше нет */
-.learning-step:hover:after {
-    display: none;
-}
-
-.learning-step strong {
-    display: block;
-    margin-bottom: 6px;
-    color: var(--yandex-black);
-    font-size: 16px;
-    line-height: 1.4;
-}
-
+/* Новый стиль заголовка */
 .learning-step strong.step-title {
     font-size: 18px;
-    color: #000;
-    margin-bottom: 12px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 14px;
+    display: block;
     position: relative;
-    display: inline-block;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f5f5f5;
 }
 
+/* Текст внутри */
 .learning-step p {
-    margin: 0;
+    margin: 0 0 15px 0;
+    line-height: 1.5;
     color: #555;
-    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* Рекомендуемая продолжительность */
+.learning-step strong {
+    font-weight: 500;
+    color: #666;
+    display: block;
     font-size: 15px;
 }
 
@@ -615,34 +672,25 @@ ul {
 }
 
 .roadmap-section h4:after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background: linear-gradient(to right, var(--yandex-yellow), rgba(255, 193, 7, 0.3));
-    border-radius: 3px;
-    transition: width 0.3s ease;
-}
-
-.roadmap-section:hover h4:after {
-    width: 80px;
+    display: none;
 }
 
 .learning-step strong.step-title:after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--yandex-yellow);
-    transition: width 0.3s ease;
+    display: none;
 }
 
 .learning-step:hover strong.step-title:after {
-    width: 100%;
+    display: none;
+}
+
+/* Убираем все желтые элементы при наведении */
+.learning-step:hover, 
+.learning-step:hover strong, 
+.learning-step:hover p,
+.learning-step:hover::before,
+.learning-step:hover::after {
+    border-color: #ddd;
+    background-color: white;
 }
 
 .faq-section {
@@ -1030,9 +1078,9 @@ h4.no-icon {
 .resource-section {
     margin-top: 20px;
     padding: 15px;
-    background-color: rgba(0, 119, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.03);
     border-radius: var(--yandex-border-radius);
-    border-left: 3px solid var(--yandex-blue);
+    border-left: none;
 }
 
 .resource-section h4 {
@@ -1042,16 +1090,80 @@ h4.no-icon {
     font-weight: 600;
 }
 
+.resource-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    justify-content: flex-start;
+}
+
+.resource-tab {
+    padding: 8px 12px;
+    margin-right: 8px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #f0f0f0;
+    transition: all 0.2s ease;
+    color: var(--yandex-black);
+}
+
+.resource-tab.active {
+    background-color: #e5e5e5;
+    color: var(--yandex-black);
+}
+
+.resource-tab.active::before {
+    content: "#";
+    margin-right: 2px;
+}
+
 .resource-list {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 15px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    border-left: none;
+    box-shadow: none;
 }
 
 .resource-item {
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 0;
+}
+
+/* Убираем все возможные линии слева */
+.resource-item:before,
+.resource-item:after,
+.resource-list:before,
+.resource-list:after {
+    display: none;
+    content: none;
+    border: none;
+}
+
+.resource-title {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.resource-title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.resource-title a:hover {
+    color: #111;
+    text-decoration: underline;
 }
 
 .resource-item:last-child {
@@ -1060,27 +1172,9 @@ h4.no-icon {
     padding-bottom: 0;
 }
 
-.resource-title {
-    font-weight: 600;
-    color: var(--yandex-blue);
-    margin-bottom: 4px;
-    display: block;
-}
-
-.resource-title a {
-    color: var(--yandex-blue);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.resource-title a:hover {
-    color: #005bb5;
-    text-decoration: underline;
-}
-
 .resource-description {
     font-size: 14px;
-    color: var(--yandex-dark-gray);
+    color: #555;
     margin-left: 0;
 }
 
@@ -1110,8 +1204,8 @@ h4.no-icon {
 }
 
 .learning-step:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-    transform: translateY(-2px);
+    border-color: #ddd;
+    background-color: white;
 }
 
 .learning-step strong.step-title {
@@ -1160,12 +1254,13 @@ h4.no-icon {
     border-radius: 16px;
     font-size: 14px;
     font-weight: 500;
-    background-color: #f0f0f0;
+    background-color: #e0e0e0;
     transition: all 0.2s ease;
+    color: var(--yandex-black);
 }
 
 .resource-tab.active {
-    background-color: var(--yandex-yellow);
+    background-color: #d0d0d0;
     color: var(--yandex-black);
 }
 
@@ -1194,31 +1289,31 @@ h4.no-icon {
 
 /* Badge для бесплатных ресурсов */
 .resource-badge {
-    display: inline-block;
-    padding: 2px 6px;
     font-size: 12px;
+    padding: 3px 8px;
     border-radius: 4px;
-    margin-left: 6px;
-    font-weight: 500;
+    margin-left: 8px;
+    font-weight: normal;
 }
 
 .resource-badge.free {
-    background-color: rgba(0, 179, 65, 0.1);
-    color: var(--yandex-green);
+    background-color: rgba(0, 115, 0, 0.07);
+    color: #007300;
+    border: none;
 }
 
 .resource-badge.paid {
-    background-color: rgba(255, 0, 0, 0.1);
-    color: var(--yandex-red);
+    background-color: rgba(150, 0, 0, 0.1);
+    color: #960000;
 }
 
 /* Улучшенные стили для списка навыков */
 .skills-container .roadmap-section ul li {
     position: relative;
     margin-bottom: 10px;
-    padding-left: 15px;
+    padding-left: 5px;
     font-size: 16px;
-    border-left: 3px solid var(--yandex-yellow);
+    border-left: none;
 }
 
 /* Изменяем стиль списка тенденций будущего на обычный маркированный список */
@@ -1249,16 +1344,17 @@ h4.no-icon {
 /* Обновляем стиль для медиа-запросов */
 @media (max-width: 768px) {
     .learning-step {
-        padding: 20px 20px 20px 25px;
+        padding: 20px;
     }
     
-    /* Убираем стили для маркеров */
-    .learning-step:after {
-        display: none;
+    .learning-step strong.step-title {
+        font-size: 16px;
+        margin-bottom: 12px;
     }
     
-    #learning-plan:before {
-        display: none;
+    .learning-step p {
+        font-size: 14px;
+        line-height: 1.4;
     }
 }
 
@@ -1770,4 +1866,12 @@ h4.no-icon {
         font-size: 14px !important;
         line-height: 1.4 !important;
     }
+}
+
+/* Восстанавливаем все границы для элементов ввода */
+.input-group input,
+.input-group textarea,
+.search-form input,
+.search-form textarea {
+    border-left: 2px solid #ddd !important;
 } 
